@@ -41,6 +41,14 @@ RUN apt-get -y install\
  lldb\
  clang-format
 
+# install cmake packages
+RUN apt-get install\
+  cmake\
+  libssl-dev\
+  libboost-all-dev\
+  doctest-dev\
+  doxygen
+
 # install qemu for WeensyOS (sadly, this pulls in a lot of crap)
 RUN apt-get -y --no-install-recommends install\
  qemu-system-x86
@@ -119,20 +127,20 @@ ENV LANG en_US.UTF-8
 # remove unneeded .deb files
 RUN rm -r /var/lib/apt/lists/*
 
-# set up passwordless sudo for user cs300-user
-RUN useradd -m -s /bin/bash cs300-user && \
-  echo "cs300-user ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/cs300-init
+# set up passwordless sudo for user cs1515-user
+RUN useradd -m -s /bin/bash cs1515-user && \
+  echo "cs1515-user ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/cs1515-init
 
 # create binary reporting version of dockerfile
-RUN (echo '#\!/bin/sh'; echo 'if test "x$1" = x-n; then echo 1; else echo 1.arm64; fi') > /usr/bin/cs300-docker-version; chmod ugo+rx,u+w,go-w /usr/bin/cs300-docker-version
+RUN (echo '#\!/bin/sh'; echo 'if test "x$1" = x-n; then echo 1; else echo 1.arm64; fi') > /usr/bin/cs1515-docker-version; chmod ugo+rx,u+w,go-w /usr/bin/cs1515-docker-version
 
 # git build arguments
-ARG USER=cs300\ User
+ARG USER=cs1515\ User
 ARG EMAIL=nobody@example.com
 
 # configure your environment
-USER cs300-user
+USER cs1515-user
 RUN rm -f ~/.bash_logout
 
-WORKDIR /home/cs300-user
+WORKDIR /home/cs1515-user
 CMD ["/bin/bash", "-l"]

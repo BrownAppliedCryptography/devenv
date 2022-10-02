@@ -9,11 +9,11 @@ container.
 ```
 # 1. build docker image locally
 cd docker
-./cs300-build-docker
+./cs1515-build-docker
 
 # 2. start development environment
 cd ..
-./cs300-run-docker
+./cs1515-run-docker
 ```
 
 For detailed setup instructions, refer to our Lab 0 setup guide!

@@ -11,7 +11,7 @@ while test "$#" -ne 0; do
             platform=linux/arm64
             shift
         else
-            echo "\`cs300-build-docker --arm\` only works on ARM64 hosts" 1>&2
+            echo "\`cs1515-build-docker --arm\` only works on ARM64 hosts" 1>&2
             exit 1
         fi
     elif test "$1" = "-x" -o "$1" = "--x86-64" -o "$1" = "--x86_64" -o "$1" = "--amd64"; then
@@ -21,7 +21,7 @@ while test "$#" -ne 0; do
         if test "`arch`" = "arm64" -o "`arch`" = "aarch64"; then
             armtext=" [-a|--arm] [-x|--x86-64]"
         fi
-        echo "Usage: cs300-build-docker$armtext" 1>&2
+        echo "Usage: cs1515-build-docker$armtext" 1>&2
         exit 1
     fi
 done
@@ -31,9 +31,9 @@ elif test -z "$platform"; then
     platform=linux/amd64
 fi
 if test -z "$tag" -a "$platform" = linux/arm64; then
-    tag=cs300:arm64
+    tag=cs1515:arm64
 elif test -z "$tag"; then
-    tag=cs300:latest
+    tag=cs1515:latest
 fi
 
 if test $platform = linux/arm64; then
