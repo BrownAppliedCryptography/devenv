@@ -34,7 +34,7 @@ RUN apt-get -y install\
  clang-format
 
 # install cmake packages
-RUN apt-get install\
+RUN apt-get -y install\
   cmake\
   libssl-dev\
   libboost-all-dev\
