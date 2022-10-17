@@ -47,7 +47,10 @@ RUN apt-get -y install\
   libssl-dev\
   libboost-all-dev\
   doctest-dev\
-  doxygen
+  doxygen\
+  libcrypto++-dev\
+  libcrypto++-doc\
+  libcrypto++-utils
 
 # install qemu for WeensyOS (sadly, this pulls in a lot of crap)
 RUN apt-get -y --no-install-recommends install\
