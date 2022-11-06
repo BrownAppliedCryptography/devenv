@@ -52,10 +52,6 @@ RUN apt-get -y install\
   libcrypto++-doc\
   libcrypto++-utils
 
-# install qemu for WeensyOS (sadly, this pulls in a lot of crap)
-RUN apt-get -y --no-install-recommends install\
- qemu-system-x86
-
 # install programs used for system exploration
 RUN apt-get -y install\
  blktrace\
