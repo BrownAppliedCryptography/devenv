@@ -42,7 +42,8 @@ RUN apt-get -y install\
   doxygen\
   libcrypto++-dev\
   libcrypto++-doc\
-  libcrypto++-utils
+  libcrypto++-utils\
+  libsqlite3-dev
 
 # install programs used for system exploration
 RUN apt-get -y install\
