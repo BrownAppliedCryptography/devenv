@@ -1,12 +1,12 @@
-CS 300 Docker
+CS 1515 Docker
 =============
 
 The Docker container-based virtualization service lets you run a
-minimal CS 300 environment, including Linux, on a macOS or Windows
+minimal CS 1515 environment, including Linux, on a macOS or Windows
 computer, without the overhead of a full virtual machine like VMware
 Workstation, VMware Fusion, or VirtualBox.
 
-It should be possible to do *all* CS 300 assignments in the CS 300
+It should be possible to do *all* CS 1515 assignments in the CS 1515
 Docker container.
 
 Advantages of Docker:
@@ -19,14 +19,14 @@ Advantages of Docker:
 Disadvantages of Docker:
 
 * Docker does not offer a graphical environment. You will need to run all CS
-  300 programs exclusively in the terminal.
+  1515 programs exclusively in the terminal.
 * Docker technology is less user-friendly than virtual machines. You’ll have
   to type weird commands.
 * You won’t get the fun, different feeling of a graphical Linux desktop,
   like the one you see in lectures..
 
 
-## Creating the CS 300 Docker container
+## Creating the CS 1515 Docker container
 
 1.  Download and install [Docker][].
 
@@ -38,7 +38,7 @@ Disadvantages of Docker:
     ```
 
     The command starts up a virtual Linux-based computer running inside your
-    computer. It then installs a bunch of software useful for CS 300 on that
+    computer. It then installs a bunch of software useful for CS 1515 on that
     environment, then takes a snapshot of the running environment. (The
     snapshot has a name, such as `cs1515:latest` or `cs1515:arm64`.) Once the
     snapshot is created, it’ll take just a second or so for Docker to restart
@@ -52,13 +52,13 @@ faster since they’ll take advantage of your previous work.
 > `./cs1515-build-docker` is a wrapper around `docker build`. On x86-64 hosts, it runs
 > `docker build -t cs1515:latest -f Dockerfile --platform linux/amd64`.
 
-## Running the CS 300 Docker container by script
+## Running the CS 1515 Docker container by script
 
 In the parent directory of this one (the cs1515-devenv repository root), you'll
-find a file called `cs1515-run-docker`. This is a script that runs your CS 300
+find a file called `cs1515-run-docker`. This is a script that runs your CS 1515
 Docker container.
 
-For example, here’s an example of running CS 300 Docker on a macOS host. At
+For example, here’s an example of running CS 1515 Docker on a macOS host. At
 first, `uname` (a program that prints the name of the currently running
 operating system) reports `Darwin` (the name of the macOS kernel). But after
 `./cs1515-run-docker` connects the terminal to a Linux container, `uname`
@@ -88,7 +88,7 @@ container, type Control-D or run the `exit` command.
 The script assumes your Docker container is named `cs1515:latest`.
 
 
-### Running CS 300 Docker by hand
+### Running CS 1515 Docker by hand
 
 If you don’t want to use the script, use a command like the following.
 
