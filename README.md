@@ -1,15 +1,16 @@
-# CS 300: development environment
+# CS 1515: development environment
 
-This repo contains a minimal dev environment setup for CS 300. In
-particular, it provides the scripts to create the course Docker
-container.
+This repo contains a minimal dev environment setup for CS 1515. In
+particular, it provides the scripts to pull or create the course Docker
+containers.
 
 ## Getting started
 
 ```
-# 1. build docker image locally
-cd docker
-./cs1515-build-docker
+# 0. Download Docker (follow instructions).
+
+# 1. Setup Docker
+./docker/cs1515-setup-docker
 
 # 2. start development environment
 cd ..

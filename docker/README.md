@@ -1,12 +1,12 @@
-CS 300 Docker
+CS 1515 Docker
 =============
 
 The Docker container-based virtualization service lets you run a
-minimal CS 300 environment, including Linux, on a macOS or Windows
+minimal CS 1515 environment, including Linux, on a macOS or Windows
 computer, without the overhead of a full virtual machine like VMware
 Workstation, VMware Fusion, or VirtualBox.
 
-It should be possible to do *all* CS 300 assignments in the CS 300
+It should be possible to do *all* CS 1515 assignments in the CS 1515
 Docker container.
 
 Advantages of Docker:
@@ -19,14 +19,28 @@ Advantages of Docker:
 Disadvantages of Docker:
 
 * Docker does not offer a graphical environment. You will need to run all CS
-  300 programs exclusively in the terminal.
+  1515 programs exclusively in the terminal.
 * Docker technology is less user-friendly than virtual machines. You’ll have
   to type weird commands.
 * You won’t get the fun, different feeling of a graphical Linux desktop,
   like the one you see in lectures..
 
+## Downloading the CS 1515 Docker container from DockerHub
+We've pre-built the container and uploaded an image of it onto DockerHub (it is like GitHub but for managing Docker images). You can run our script that will automatically download the pre-built image for you to use. This is the **preferred solution**. 
 
-## Creating the CS 300 Docker container
+1.  Download and install [Docker][].
+
+2.  From this directory, run the following command: 
+  
+    ```shellsession
+    $ ./cs1515-setup-docker
+    ```
+
+    This will pull the latest image suitable for your computer, and tag it `cs1515:latest` or `cs1515:arm64` depending on your computer architecture. 
+  
+When we make updates to the Docker image, you can rerun the script to update the image. 
+## Building the CS 1515 Docker container from scratch
+While it is much more convenient to pull the Docker image from DockerHub (see above), you can also build the Docker image from scratch (you will likely never need to do this). This takes ~10-20 minutes to build. 
 
 1.  Download and install [Docker][].
 
@@ -38,27 +52,31 @@ Disadvantages of Docker:
     ```
 
     The command starts up a virtual Linux-based computer running inside your
-    computer. It then installs a bunch of software useful for CS 300 on that
+    computer. It then installs a bunch of software useful for CS 1515 on that
     environment, then takes a snapshot of the running environment. (The
     snapshot has a name, such as `cs1515:latest` or `cs1515:arm64`.) Once the
     snapshot is created, it’ll take just a second or so for Docker to restart
     it.
+
+    The script will attempt to ask for authentication to be able to tag and push the image. At this point, you may exit the script if you only wish to have a built image. 
 
 We may need to change the Docker image during the semester. If we do, you’ll
 update your repository to get the latest Dockerfile, then re-run the
 `./cs1515-build-docker` command from step 2. However, later runs should be
 faster since they’ll take advantage of your previous work.
 
+For these reasons, it is **highly recommended** that you pull the image from DockerHub. 
+
 > `./cs1515-build-docker` is a wrapper around `docker build`. On x86-64 hosts, it runs
 > `docker build -t cs1515:latest -f Dockerfile --platform linux/amd64`.
 
-## Running the CS 300 Docker container by script
+## Running the CS 1515 Docker container by script
 
 In the parent directory of this one (the cs1515-devenv repository root), you'll
-find a file called `cs1515-run-docker`. This is a script that runs your CS 300
+find a file called `cs1515-run-docker`. This is a script that runs your CS 1515
 Docker container.
 
-For example, here’s an example of running CS 300 Docker on a macOS host. At
+For example, here’s an example of running CS 1515 Docker on a macOS host. At
 first, `uname` (a program that prints the name of the currently running
 operating system) reports `Darwin` (the name of the macOS kernel). But after
 `./cs1515-run-docker` connects the terminal to a Linux container, `uname`
@@ -85,10 +103,10 @@ connected to the container. (The `a47f05ea5085` part is a unique identifier for 
 running container.) You can execute any Linux commands you want. To escape from the
 container, type Control-D or run the `exit` command.
 
-The script assumes your Docker container is named `cs1515:latest`.
+The script assumes your Docker container is named `cs1515:latest` or `cs1515:arm64`.
 
 
-### Running CS 300 Docker by hand
+### Running CS 1515 Docker by hand
 
 If you don’t want to use the script, use a command like the following.
 
