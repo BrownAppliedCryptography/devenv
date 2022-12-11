@@ -1,5 +1,7 @@
 #! /bin/bash
 
+echo This will build the cs1515 Docker image from scratch! Unless you are modifying the Dockerfile, you should exit this script and use cs1515-setup-docker instead.
+
 cd `dirname $0`
 
 arch="`uname -m`"
@@ -42,7 +44,7 @@ else
     exec docker build -t "$tag" -f Dockerfile --platform linux/amd64 .
 fi
 
-echo Image built as $tag, attempting to tag and push to DockerHub. 
+echo The image has been built as $tag, attempting to tag and push to DockerHub, following authentication. If you just wanted to build the image, you may safely exit here. 
 
 dockeruser=jiahuac
 image=$dockeruser/$tag
