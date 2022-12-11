@@ -43,12 +43,3 @@ if test $platform = linux/arm64; then
 else
     exec docker build -t "$tag" -f Dockerfile --platform linux/amd64 .
 fi
-
-echo The image has been built as $tag, attempting to tag and push to DockerHub, following authentication. If you just wanted to build the image, you may safely exit here. 
-
-dockeruser=jiahuac
-image=$dockeruser/$tag
-
-exec docker login
-exec docker tag $tag $image
-exec docker push $image
