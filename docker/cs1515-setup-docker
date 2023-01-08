@@ -1,7 +1,5 @@
 #! /bin/bash
 
-echo This will build the cs1515 Docker image from scratch! Unless you are modifying the Dockerfile, you should exit this script and use cs1515-setup-docker instead.
-
 cd `dirname $0`
 
 arch="`uname -m`"
@@ -13,7 +11,7 @@ while test "$#" -ne 0; do
             platform=linux/arm64
             shift
         else
-            echo "\`cs1515-build-docker --arm\` only works on ARM64 hosts" 1>&2
+            echo "\`cs1515-setup-docker --arm\` only works on ARM64 hosts" 1>&2
             exit 1
         fi
     elif test "$1" = "-x" -o "$1" = "--x86-64" -o "$1" = "--x86_64" -o "$1" = "--amd64"; then
@@ -23,7 +21,7 @@ while test "$#" -ne 0; do
         if test "`arch`" = "arm64" -o "`arch`" = "aarch64"; then
             armtext=" [-a|--arm] [-x|--x86-64]"
         fi
-        echo "Usage: cs1515-build-docker$armtext" 1>&2
+        echo "Usage: cs1515-setup-docker$armtext" 1>&2
         exit 1
     fi
 done
@@ -38,8 +36,7 @@ elif test -z "$tag"; then
     tag=cs1515:latest
 fi
 
-if test $platform = linux/arm64; then
-    exec docker build -t "$tag" -f Dockerfile.arm64 --platform linux/arm64 .
-else
-    exec docker build -t "$tag" -f Dockerfile --platform linux/amd64 .
-fi
+dockeruser=jiahuac
+image=$dockeruser/$tag
+
+exec docker pull $image && docker tag $image $tag
