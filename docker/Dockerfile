@@ -43,7 +43,8 @@ RUN apt-get -y install\
   libcrypto++-dev\
   libcrypto++-doc\
   libcrypto++-utils\
-  libsqlite3-dev
+  libsqlite3-dev\
+  sqlite3
 
 # install programs used for system exploration
 RUN apt-get -y install\
@@ -65,10 +66,6 @@ RUN apt-get -y install\
  psmisc\
  sudo\
  wget
-
-# install rust
-RUN RUSTUP_HOME=/opt/rust CARGO_HOME=/opt/rust \
-  bash -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -E sh -s -- -y"
 
 # set up libraries
 RUN apt-get -y install\
