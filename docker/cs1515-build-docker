@@ -39,7 +39,7 @@ elif test -z "$tag"; then
 fi
 
 if test $platform = linux/arm64; then
-    exec docker build -t "$tag" -f Dockerfile.arm64 --platform linux/arm64 .
+    exec docker build --no-cache -t "$tag" -f Dockerfile.arm64 --platform linux/arm64 .
 else
-    exec docker build -t "$tag" -f Dockerfile --platform linux/amd64 .
+    exec docker build --no-cache -t "$tag" -f Dockerfile --platform linux/amd64 .
 fi
