@@ -13,7 +13,6 @@ containers.
 ./docker/cs1515-setup-docker
 
 # 2. start development environment
-cd ..
 ./cs1515-run-docker
 ```
 
