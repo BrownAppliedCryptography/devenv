@@ -36,6 +36,7 @@ RUN apt-get -y install\
 # install cmake packages
 RUN apt-get -y install\
   cmake\
+  ninja-build\
   libssl-dev\
   libboost-all-dev\
   doctest-dev\
@@ -65,7 +66,10 @@ RUN apt-get -y install\
  nano\
  psmisc\
  sudo\
- wget
+ wget\
+ zip\
+ unzip\
+ tar
 
 # set up libraries
 RUN apt-get -y install\
