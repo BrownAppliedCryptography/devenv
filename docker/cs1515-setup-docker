@@ -39,4 +39,5 @@ fi
 dockeruser=jiahuac
 image=$dockeruser/$tag
 
-exec docker pull $image && docker tag $image $tag
+docker pull $image
+docker tag $image $tag
