@@ -160,6 +160,8 @@ RUN rm -f ~/.bash_logout
 # install libscapi
 # WORKDIR /home/cs1515-user
 # RUN git clone https://github.com/BrownAppliedCryptography/libscapi.git
+# RUN git submodules init --recursive
+# RUN git submodules update --recursive
 
 # WORKDIR /home/cs1515-user/libscapi
 # RUN make
