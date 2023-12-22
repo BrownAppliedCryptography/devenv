@@ -33,18 +33,23 @@ RUN apt-get -y install\
  lldb\
  clang-format
 
-# install cmake packages
+# install cmake and crypto packages
 RUN apt-get -y install\
   cmake\
+  build-essential\
   ninja-build\
+  libssl-ocaml-dev\
   libssl-dev\
   libboost-all-dev\
+  libgmp3-dev\
   doctest-dev\
   doxygen\
   libcrypto++-dev\
   libcrypto++-doc\
   libcrypto++-utils\
   libsqlite3-dev\
+  liblog4cpp5-dev\
+  zlib1g-dev\
   sqlite3
 
 # install programs used for system exploration
@@ -89,6 +94,15 @@ RUN apt-get -y install\
  time\
  traceroute
 
+# install boost, again
+WORKDIR /home
+RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.71.0/source/boost_1_71_0.tar.bz2
+RUN tar -xf boost_1_71_0.tar.bz2
+
+WORKDIR /home/boost_1_71_0/
+RUN ./bootstrap.sh --prefix=/usr && ./b2 stage threading=multi link=shared
+RUN ./b2 install threading=multi link=shared
+
 # set up default locale
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -111,5 +125,14 @@ ARG EMAIL=nobody@example.com
 USER cs1515-user
 RUN rm -f ~/.bash_logout
 
+# install libscapi
+# WORKDIR /home/cs1515-user
+# RUN git clone https://github.com/BrownAppliedCryptography/libscapi.git
+
+# WORKDIR /home/cs1515-user/libscapi
+# RUN make
+# RUN ldconfig ~/boost_1_60_0/stage/lib/ ~/libscapi/install/lib/
+
+# enter bash
 WORKDIR /home/cs1515-user
 CMD ["/bin/bash", "-l"]
