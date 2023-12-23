@@ -158,13 +158,13 @@ USER cs1515-user
 RUN rm -f ~/.bash_logout
 
 # install SEAL
-WORKDIR /home/cs1515-user
+WORKDIR /home
 RUN git clone https://github.com/microsoft/SEAL.git
 
-WORKDIR /home/cs1515-user/SEAL
+WORKDIR /home/SEAL
 RUN cmake -S . -B build
 RUN cmake --build build
-RUN cmake --install build
+RUN sudo cmake --install build
 
 # install libscapi
 WORKDIR /home/cs1515-user
